@@ -21,3 +21,7 @@ So if you are interested in using pure sql instead of using an ORM, this repo mi
   <li><i><b>Creating blog posts</b></i></li> 
   <li><i><b>Paginating long blog post list</b></i></li> 
 </ul>
+<h2>Create your profile</h2>
+<img src = "https://raw.githubusercontent.com/Alidr79/flasky_project/master/profile1_showcase.png" width = 800px height = 600px>
+<h2>Share blog post</h2>
+<img src = "https://raw.githubusercontent.com/Alidr79/flasky_project/master/post_showcase.png" width = 900px height = 900px>
