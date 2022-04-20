@@ -1,7 +1,7 @@
 import datetime
 import os
 
-from flask import render_template, session, redirect, url_for, current_app
+from flask import render_template, session, redirect, url_for, current_app, abort
 from . import main
 from .forms import NameForm
 from ..email import send_mail
@@ -184,11 +184,13 @@ def confirm(token):
 @main.route('/profile/<username>')
 def profile(username):
     owner = False
-    if current_user.get_username() == username:
+    if current_user.is_authenticated and current_user.get_username() == username:
         owner = True
     connection = get_connection().get_db_connection()
     user = connection.execute("SELECT * FROM user WHERE username=?",
                               [username]).fetchone()
+    if user is None:
+        abort(404)
 
     last_seen_str = time_from(user['last_seen'])
 

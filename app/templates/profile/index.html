@@ -72,11 +72,8 @@
 {% block content %}
 <div class="profile">
 
-    <object data="{{ url_for('main.send_profile_pic', filename='default_pic.png') }}" type="image/png" class="profile_pic">
         <img src={{ url_for('main.send_profile_pic' , filename=profile_pic) }}
-     class="profile_pic">
-    </object>
-
+            class="profile_pic">
     <h1 class = "nick_name">{{ user['nick_name'] }}</h1>
 
     {% if owner %}
