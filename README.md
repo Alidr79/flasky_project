@@ -24,4 +24,4 @@ So if you are interested in using pure sql instead of using an ORM, this repo mi
 <h2>Create your profile</h2>
 <img src = "https://raw.githubusercontent.com/Alidr79/flasky_project/master/profile1_showcase.png" width = 800px height = 600px>
 <h2>Share blog post</h2>
-<img src = "https://raw.githubusercontent.com/Alidr79/flasky_project/master/post_showcase.png" width = 900px height = 900px>
+<img src = "https://raw.githubusercontent.com/Alidr79/flasky_project/master/post_showcase.png" width = 800px height = 600px>
