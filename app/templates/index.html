@@ -1,0 +1,177 @@
+{{ moment.include_moment() }}
+{{ moment.locale('fa') }}
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block style %}
+.box{
+    background-color: aliceblue;
+    border: 3px outset white;
+    color: black;
+    font-family: serif;
+    font-size: large;
+    margin: auto;
+    border-radius: 30px;
+    padding: 8px;
+    width:80%;
+    overflow: hidden;
+
+}
+
+.input_text {
+    border-radius: 30px;
+    font-family:serif;
+    font-size:18px;
+    border: none;
+    padding: 10px;
+    width:95%;
+}
+
+.input_text:focus {
+    border: none;
+    outline: none;
+}
+
+.button {
+    border-radius: 20px;
+    font-size: large;
+    padding: 5px;
+    margin-top:5px;
+    overflow:hidden;
+
+}
+
+.button:hover {
+    background-color: powderblue;
+    color: aliceblue;
+
+}
+
+.pic_holder{
+    float:left;
+    height:120px;
+}
+
+.pic{
+
+    width:100px;
+    height:100px;
+    text-align:center;
+    border-radius:100px;
+}
+
+.name {
+    font-size:20px;
+    font-family:serif;
+    text-decoration:none;
+    padding:5px;
+
+}
+
+.body {
+    font-family:serif;
+    font-size:18px;
+    overflow:auto;
+    padding:7px;
+    border-radius:30px;
+    background-color:white;
+}
+.time{
+    font-size:15px;
+    text-align:center;
+}
+
+
+.page {
+  border-radius:40px;
+  margin:auto;
+  width:80%;
+  padding:7px;
+  margin-top:5px;
+  text-align:center;
+  overflow:auto;
+
+}
+
+.page a {
+  border-radius:40px;
+  color: black;
+  padding: 8px 16px;
+  font-family:serif;
+  font-size:22px;
+  text-decoration:none;
+}
+
+.page a:hover {
+    color:white;
+    background-color:rgba(0,200,0,200);
+}
+
+{% endblock %}
+
+{% block menu %}
+<a class="menu_item" href= {{ url_for('main.profile' , username=username) }}>Profile</a>
+<a class="menu_item" href="/logout">Logout</a>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="margin:auto;width:50%">
+    {% if get_flashed_messages() %}
+    <div class="alert alert-warning" style="font-size:20px;font-family:serif;color:white;
+    border-radius:40px;padding:5px;text-align:center;background-color:#ff9800dd">
+    <button type="button" onclick="this.parentElement.style.display='none'"
+    style="float:left;border-radius:40px;background-color:#ffffff33;">&times;</button>
+    {{ get_flashed_messages()[-1] }}
+    </div>
+    <br>
+    {% endif %}
+</div>
+
+<div class="box">
+    <form method="post">
+        <label style="padding:10px">What's on your mind?</label><br>
+        <textarea name="post_body" class="input_text"
+                  rows="3" cols="50" maxlength="300"
+                  title="Up to 300 characters is allowed"
+        placeholder="write something and share it with the community!" required></textarea><br>
+        <button type="submit" class="button">Send</button>
+
+    </form>
+</div>
+<hr>
+{% for post in posts %}
+<div class="box"  style="margin-top:5px;border-style:inset;">
+    <div class="pic_holder">
+
+            <a href= {{ url_for('main.profile', username = post['username']) }}>
+                <img src= {{ url_for('main.pic_from_id' , user_id = post['id']) }}
+                class = "pic" alt = ""></a>
+    </div>
+
+    <a href= {{ url_for('main.profile', username = post['username']) }}
+    class = "name" style="text-align:center">{{ post['nick_name'] }}</a><hr>
+    <pre class="body">{{ post['body'] }}</pre>
+    <p class="time">{{time_from(post['timestamp'])}}</p>
+
+
+
+</div>
+
+
+{% endfor %}
+
+<div class="page">
+  <a href= {{ url_for('main.index', page = previous_page ) }}>&laquo;</a>
+  <a href= {{ url_for('main.index', page = 1) }}>First</a>
+  <a href= {{ url_for('main.index', page = total_pages) }}>Last</a>
+  <a href= {{ url_for('main.index', page = next_page) }}>&raquo;</a>
+</div>
+
+
+
+{% endblock %}
+
+
+

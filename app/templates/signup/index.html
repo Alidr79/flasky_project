@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block style %}
+.signup_form {
+    background-color: rgb(113, 147, 211);
+    border: 3px outset white;
+    text-align: center;
+    color: white;
+    font-family: serif;
+    font-size: large;
+    margin: auto;
+    border-radius: 30px;
+    padding: 3px;
+    width:40%;
+    overflow: hidden;
+}
+
+.input_text {
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    width:50%;
+}
+
+.submit_button {
+    border-radius: 30px;
+    font-size: large;
+    padding: 5px;
+    width:40%;
+
+}
+
+.submit_button:hover {
+    background-color: aqua;
+    color: aliceblue;
+
+}
+{% endblock %}
+
+{% block title %}Signup{% endblock %}
+
+{% block menu %}
+<a class="menu_item" href="/login">Login</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container" style="margin:auto;width:50%">
+    {% if get_flashed_messages()[-1] %}
+    <div class="alert alert-warning" style="font-size:20px;font-family:serif;color:white;
+    border-radius:40px;padding:5px;text-align:center;background-color:#ff9800dd">
+    <button type="button" class="close" data-dismiss="alert" onclick="this.parentElement.style.display='none'"
+    style="float:left;border-radius:80px;background-color:powderblue;">&times;</button>
+    {{ get_flashed_messages()[-1] }}
+    </div>
+    <br>
+    {% endif %}
+</div>
+
+<div class="signup_form">
+    
+    <form method="post">
+        <label for="username">User name</label>
+        <br>
+        <input type="email" name="username"
+        maxlength="35" id = "username"
+        placeholder="mail@example.com"
+        title="mail@example.com"
+        value="{{ username }}" class="input_text" required>
+
+        <br><br>
+
+        <label for="password">Password</label>
+        <br>
+        <input type="password" name="password"
+        maxlength="16" placeholder="Hard to guess password"
+         title="Minimum length is 8 and Maximum length is 16"
+         class="input_text" required>
+
+        <br><br>
+
+        <label for="password">Confirm password</label>
+        <br>
+        <input type="password" name="confirm_password"
+        maxlength="16" placeholder="Confirm your password"
+         title="Minimum length is 8 and Maximum length is 16"
+         class="input_text" required>
+
+        <br><br><hr>
+
+        <button type="submit" class="submit_button">Signup</button>
+    
+    
+    </form>
+
+
+</div>
+
+
+{% endblock %}

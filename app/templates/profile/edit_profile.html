@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title%}Edit profile{% endblock %}
+
+{% block style %}
+.edit_form {
+    background-color: rgb(113, 147, 211);
+    border: 3px outset white;
+    text-align: center;
+    color: white;
+    font-family: serif;
+    font-size: large;
+    margin: auto;
+    border-radius: 30px;
+    padding: 3px;
+    width:60%;
+    overflow: hidden;
+}
+
+.input_text {
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+    width:50%;
+}
+
+.input_text:focus {
+    border: none;
+    outline: none;
+}
+
+#about_me {
+    font-family:serif;
+    font-size:20px
+
+}
+#nick_name {
+    font-family:serif;
+    font-size:20px
+
+}
+
+.submit_button {
+    border-radius: 30px;
+    font-size: large;
+    padding: 5px;
+    width:40%;
+
+}
+
+.submit_button:hover {
+    background-color: aqua;
+    color: aliceblue;
+
+}
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="edit_form">
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        <label for="profile_pic">Profile image</label>
+        <input type="file" name="profile_pic" class="upload">
+        <br><br>
+
+        <label for="username">Nick name</label>
+        <br>
+        <input type="text" name="nick_name"
+        maxlength="20" id = "nick_name"
+        placeholder="arbitrary name"
+        title="max length 20 characters"
+        value="{{ user['nick_name'] }}" class="input_text" required>
+
+        <br><br>
+
+        <label for="about_me">About me</label>
+        <br>
+        <textarea rows="4" cols="50" id = "about_me"
+        name="about_me"
+        placeholder="Describe yourself here..."
+        maxlength="1000" title="max length 1000 characters"
+        class="input_text" >{{ user['about'] }}</textarea>
+
+        <br><hr>
+
+        <button type="submit" class="submit_button">Submit</button>
+    
+    
+    </form>
+
+
+
+{% endblock %}

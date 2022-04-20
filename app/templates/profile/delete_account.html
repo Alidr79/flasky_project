@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block style %}
+.delete_form {
+    background-color: rgb(113, 147, 211);
+    border: 3px outset white;
+    text-align: center;
+    color: white;
+    font-family: serif;
+    font-size: large;
+    margin: auto;
+    border-radius: 30px;
+    padding: 3px;
+    width:40%;
+    overflow: hidden;
+}
+
+.input_text {
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    width:50%;
+}
+
+.submit_button {
+    border-radius: 30px;
+    font-size: large;
+    padding: 5px;
+    width:40%;
+
+}
+
+.submit_button:hover {
+    background-color: aqua;
+    color: aliceblue;
+
+}
+{% endblock %}
+
+{% block title %}Delete account{% endblock %}
+
+
+{% block content %}
+
+<div class="container" style="margin:auto;width:50%">
+    {% if get_flashed_messages() %}
+    <div class="alert alert-warning" style="font-size:20px;font-family:serif;color:white;
+    border-radius:40px;padding:5px;text-align:center;background-color:#ff9800">
+    <button type="button" onclick="this.parentElement.style.display='none'"
+    style="float:left;border-radius:40px;background-color:#ffffff33;">&times;</button>
+    {{ get_flashed_messages()[-1] }}
+    </div>
+    <br>
+    {% endif %}
+</div>
+
+
+<div class="delete_form">
+    
+    <form method="post">
+        <label for="password">Enter your password</label>
+        <br>
+        <input type="password" name="password"
+        maxlength="16"
+        value="{{ request.form['password'] }}" class="input_text" required>
+
+        <br><hr>
+        <button type="submit" class="submit_button">Delete account</button>
+    
+    
+    </form>
+
+
+</div>
+
+
+{% endblock %}

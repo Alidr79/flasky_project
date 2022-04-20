@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{{ moment.include_moment() }}
+{{ moment.locale('fa') }}
+
+
+
+{% block style %}
+
+.profile{
+
+    background-color:aliceblue;
+    margin:auto;
+    width:60%;
+    border-style:inset;
+    border-radius:50px;
+    text-align:center;
+    padding:5px;
+    overflow:hidden;
+}
+
+.nick_name{
+    font-family:serif;
+    font-size:30px;
+}
+
+.profile_pic{
+    width:150px;
+    height:150px;
+    text-align:center;
+    border-radius:100px;
+}
+
+.about{
+    font-family:serif;
+    font-size:20px;
+    border-style:outset;
+    border-radius:30px;
+    padding:10px;
+    margin:5px;
+    color:black;
+    overflow:auto;
+    text-align:left;
+}
+
+.last_seen{
+    
+    font-size:16px;
+    text-align:center;
+
+}
+
+.button{
+    background-color:rgba(135, 147, 245, 0.99);
+    border-radius:30px;
+    padding:5px;
+    text-decoration:none;
+    color:aliceblue;
+}
+.button:hover{
+    font-size:120%;
+    color:aliceblue;
+    background-color:rgba(235, 147, 245, 0.89);
+}
+
+
+{% endblock %}
+
+{% block menu %}
+<a class="menu_item" href="/delete_account">Delete-account</a>
+{% endblock %}
+
+{% block content %}
+<div class="profile">
+
+    <object data="{{ url_for('main.send_profile_pic', filename='default_pic.png') }}" type="image/png" class="profile_pic">
+        <img src={{ url_for('main.send_profile_pic' , filename=profile_pic) }}
+     class="profile_pic">
+    </object>
+
+    <h1 class = "nick_name">{{ user['nick_name'] }}</h1>
+
+    {% if owner %}
+    <a href={{url_for('main.edit_profile')}} class="button">Edit profile</a>
+    {% endif %}
+    <hr>
+    <pre class= "about">{{ user['about'] }}</pre>
+    <p class="last_seen">
+        joined at {{ user['join_date'] }}
+        <br>
+        last seen
+        {{ last_seen_str }}
+    </p>
+
+</div>
+
+{% endblock %}

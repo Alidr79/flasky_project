@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+       {% for message in get_flashed_messages() %}
+       <div class="alert alert-warning" style="font-size:20px;font-family:serif;color:white;border-radius:40px;padding:5px;
+       margin-left:300px;margin-right:300px;margin-top: 10px;text-align:center;background-color:rgba(255, 99, 71, 0.644)"
+       onclick="this.style.display='none'">
+       {{ message }}
+       </div>
+       {% endfor %}
+       </div>
+{% if success %}
+<h3 style="background-color: rgba(54, 173, 54, 0.507);color: whitesmoke;text-align: center;">Successfully added</h3>
+{% endif %}
+<h1>{% block title %} Add a new post {% endblock %}</h1>
+<form method="post">
+    <label>Title</label>
+    <br>
+    <input type="text" name="title"
+           placeholder="Post title"
+           value="{{ request.form['title']}}">
+    <br>
+    <label for="content">Post Content</label>
+    <br>
+    <textarea name="content"
+              placeholder="Post content"
+              rows="10"
+              cols="50">{{ request.form['content']}}</textarea>
+     <br>
+     <button type="submit">Submit</button>
+
+</form>
+
+{% endblock %}
+
