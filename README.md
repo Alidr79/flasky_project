@@ -1,7 +1,11 @@
 # My version of flasky project (Flask::python)
 I have created this repo with the help of "Flask web app development" book by Miguel Grinberg<br> 
 + **The main difference is that i did'nt use any ORM's like SQLAlchemy**<br>
-So if you are interested in using pure sql instead of using an ORM, this repo might be helpful. (Ignore the SQLAlchemy in requirements.txt) 
+So if you are interested in using pure sql instead of using an ORM, this repo might be helpful. (Ignore the SQLAlchemy in requirements.txt)<br>
+
++ **I have also deploy this app to pythonanywhere, you can try it :**<br>
+<a href = "http://alidr79.pythonanywhere.com/" target="_blank">Open the app</a>
+
 ```diff
 + All of the code sections related to working with database is written in pure SQL syntax. 
 ! Until chapter 12 of 2nd edition 
