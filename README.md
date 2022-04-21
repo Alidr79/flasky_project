@@ -3,7 +3,7 @@ I have created this repo with the help of "Flask web app development" book by Mi
 + **The main difference is that i did'nt use any ORM's like SQLAlchemy**<br>
 So if you are interested in using pure sql instead of using an ORM, this repo might be helpful. (Ignore the SQLAlchemy in requirements.txt)<br>
 
-+ **I have also deployed this app to pythonanywhere, you can try using the app:**<br>
++ **I have also deployed this app to pythonanywhere, you can try using the app :**<br>
 <a href = "http://alidr79.pythonanywhere.com/" target="_blank">Open the app</a>
 
 ```diff
